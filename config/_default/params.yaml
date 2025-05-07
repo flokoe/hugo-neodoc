@@ -1,0 +1,13 @@
+---
+
+modules:
+  neodoc:
+    # Global banner that can contain Markdown content.
+    # There is no hard limit, but I recommend to keep it short.
+    # banner:
+    #   # Optional type to control background color.
+    #   # Available options: normal (default), info, warning, critical.
+    #   type: info
+    #   content: >
+    #     This is some text in the banner.
+    #     **Markdown** is supported.

@@ -1,0 +1,10 @@
+{{ $typeColor := index
+    (dict "normal" "gray-500" "info" "blue-500" "warning" "yellow-500" "critical" "red-500")
+    (default "normal" .type)
+}}
+
+<div class="bg-{{ $typeColor}} p-4">
+    <div class="max-w-6xl mx-auto text-center">
+        {{ .content | markdownify }}
+    </div>
+</div>
