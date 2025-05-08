@@ -11,7 +11,9 @@
     flex justify-between
     border-b border-zinc-800
 ">
-    <em class="text-xl not-italic font-bold">{{ site.Title }}</em>
+    <em class="text-xl not-italic font-bold">
+        <a href="/">{{ site.Title }}</a>
+    </em>
 
     <div class="flex gap-5">
         <button x-on:click="showSearch = ! showSearch">
