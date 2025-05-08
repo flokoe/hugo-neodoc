@@ -12,10 +12,10 @@
     x-data="{ showMenuStatic: false, showSearch: false }"
     :class="{ 'overflow-hidden': showMenuStatic || showSearch }"
 >
-    <header class="sticky top-0">
+    <header class="sticky top-0 bg-zinc-950" x-data="{ showToc: false }">
         {{ partial "header.html" . }}
     </header>
-    <main class="p-4">
+    <main class="p-4 snap-y">
         {{ block "main" . }}{{ end }}
     </main>
     <footer>

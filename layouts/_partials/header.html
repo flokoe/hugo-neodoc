@@ -100,10 +100,24 @@
         Frame > Bottom Bracket
     </div>
 
-    <button>
-        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
-            <path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                d="M16 12H3m13 6H3M16 6H3m18 6h.01M21 18h.01M21 6h.01" />
-        </svg>
+    <button  x-on:click="showToc = ! showToc">
+        <template x-if="!showToc">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
+                <path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                    d="M16 12H3m13 6H3M16 6H3m18 6h.01M21 18h.01M21 6h.01" />
+            </svg>
+        </template>
+
+        <template x-if="showToc">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
+                <path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                    d="M18 6L6 18M6 6l12 12" />
+            </svg>
+        </template>
     </button>
+</div>
+
+<div x-show="showToc" x-data="closeToc()" @click="closeToc($event)" class="px-4 py-5 border-t border-zinc-800 absolute bg-zinc-950 w-full" x-transition>
+    <h3 class="uppercase text-sm mb-3">On this page</h3>
+    {{ .Page.TableOfContents }}
 </div>

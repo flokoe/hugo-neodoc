@@ -5,7 +5,20 @@
   main h1 {
     @apply text-3xl mb-4;
   }
+
   main p {
     @apply mb-5;
+  }
+
+  #TableOfContents ul ul {
+    @apply ml-4;
+  }
+
+  #TableOfContents li {
+    @apply my-1 last:mb-0;
+  }
+
+  main h2, main h3, main h4 {
+    @apply snap-start scroll-mt-32;
   }
 }
