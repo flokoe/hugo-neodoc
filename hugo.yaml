@@ -1,5 +1,7 @@
+title: Hugo Neodoc
 baseURL: https://example.org/
 languageCode: en-US
+
 menus:
   main:
   - name: Home
@@ -11,6 +13,7 @@ menus:
   - name: Tags
     pageRef: /tags
     weight: 30
+
 build:
   buildStats:
     enable: true
@@ -19,6 +22,7 @@ build:
       target: css
     - source: (postcss|tailwind)\.config\.js
       target: css
+
 module:
   hugoVersion:
     extended: true
@@ -29,4 +33,3 @@ module:
     - disableWatch: true
       source: hugo_stats.json
       target: assets/notwatching/hugo_stats.json
-title: My New Hugo Site
