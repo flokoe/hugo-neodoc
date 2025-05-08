@@ -9,8 +9,8 @@
     text-zinc-900 dark:text-zinc-100
     text-lg
 "
-    x-data="{ showMenuStatic: false }"
-    :class="{ 'overflow-hidden': showMenuStatic }"
+    x-data="{ showMenuStatic: false, showSearch: false }"
+    :class="{ 'overflow-hidden': showMenuStatic || showSearch }"
 >
     <header class="sticky top-0">
         {{ partial "header.html" . }}
