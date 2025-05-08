@@ -1,2 +1,11 @@
 @import "tailwindcss";
 @source "hugo_stats.json";
+
+@layer base {
+  main h1 {
+    @apply text-3xl mb-4;
+  }
+  main p {
+    @apply mb-5;
+  }
+}
