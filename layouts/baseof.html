@@ -4,11 +4,18 @@
   {{ partial "head.html" . }}
 </head>
 
-<body class="text-lg">
-    <header>
+<body class="
+    bg-zinc-100 dark:bg-zinc-900
+    text-zinc-900 dark:text-zinc-100
+    text-lg
+"
+    x-data="{ showMenuStatic: false }"
+    :class="{ 'overflow-hidden': showMenuStatic }"
+>
+    <header class="sticky top-0">
         {{ partial "header.html" . }}
     </header>
-    <main>
+    <main class="p-4">
         {{ block "main" . }}{{ end }}
     </main>
     <footer>

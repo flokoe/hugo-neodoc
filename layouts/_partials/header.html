@@ -6,5 +6,83 @@
     {{ partial "banner.html" . }}
 {{ end }}
 
-<h1>{{ site.Title }}</h1>
-{{ partial "menu.html" (dict "menuID" "main" "page" .) }}
+<div class="
+    bg-zinc-300 dark:bg-zinc-950 p-4
+    flex justify-between
+    border-b border-zinc-800
+">
+    <em class="text-xl not-italic font-bold">{{ site.Title }}</em>
+
+    <div class="flex gap-5">
+        <button>
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
+                <g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2">
+                    <path d="m21 21l-4.34-4.34" />
+                    <circle cx="11" cy="11" r="8" />
+                </g>
+            </svg>
+        </button>
+
+        <button x-on:click="showMenuStatic = ! showMenuStatic">
+            <template x-if="!showMenuStatic">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
+                    <g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2">
+                        <circle cx="12" cy="12" r="1" />
+                        <circle cx="12" cy="5" r="1" />
+                        <circle cx="12" cy="19" r="1" />
+                    </g>
+                </svg>
+            </template>
+
+            <template x-if="showMenuStatic">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
+                    <path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                        d="M18 6L6 18M6 6l12 12" />
+                </svg>
+            </template>
+        </button>
+    </div>
+</div>
+
+<div
+    class="absolute bg-zinc-900 w-full h-screen z-100 pt-8"
+    x-show="showMenuStatic"
+    x-transition
+>
+    <nav class="max-w-3xs mx-auto text-xl text-center">
+        <ul class="mb-8">
+            {{ with .Site.Menus.header_static }}
+            {{ range . }}
+            <li class="my-5"><a href="{{ .URL }}">{{ .Name }}</a></li>
+            {{ end }}
+            {{ end }}
+        </ul>
+
+        <!-- <div>lang select</div>
+        <div>theme</div>
+        <div>socials</div> -->
+    </nav>
+</div>
+
+<div class="
+    bg-zinc-300 dark:bg-zinc-950
+    px-4 py-3
+    flex justify-between
+">
+    <div class="flex gap-3 items-center">
+        <button>
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
+                <path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                    d="M15 18H3M17 6H3m18 6H3" />
+            </svg>
+        </button>
+        Frame > Bottom Bracket
+    </div>
+
+    <button>
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
+            <path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                d="M16 12H3m13 6H3M16 6H3m18 6h.01M21 18h.01M21 6h.01" />
+        </svg>
+    </button>
+</div>

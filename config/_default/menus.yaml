@@ -1,0 +1,10 @@
+---
+
+# Static Menu in the header.
+# header_static:
+#   - name: Blog
+#     pageRef: /blog
+#     weight: 10
+#   - name: About
+#     pageRef: /about
+#     weight: 20
