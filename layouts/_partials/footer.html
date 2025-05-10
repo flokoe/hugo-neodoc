@@ -1,20 +1,18 @@
-<footer class="bg-zinc-950 p-4">
-    <div class="sm:flex sm:justify-between sm:items-center max-w-6xl mx-auto">
-        <p>
-            <small class="block">Copyright © {{ now.Year }} {{ site.Params.author }}</small>
-            <small class="block">Made with <a href="https://hugo-neodoc.flokoe.de/">Hugo Neodoc</a></small>
-        </p>
+<div class="sm:flex sm:justify-between sm:items-center max-w-6xl mx-auto">
+    <p>
+        <small class="block">Copyright © {{ now.Year }} {{ site.Params.author }}</small>
+        <small class="block">Made with <a href="https://hugo-neodoc.flokoe.de/">Hugo Neodoc</a></small>
+    </p>
 
-        {{ with site.Params.socials }}
-            <ul class="flex gap-4 mt-4 sm:mt-0">
-                {{ range . }}
-                    <li>
-                        <a href="{{ .url }}" class="*:w-4">
-                            foo
-                        </a>
-                    </li>
-                {{ end }}
-            </ul>
-        {{ end }}
-    </div>
-</footer>
+    {{ with site.Params.socials }}
+        <ul class="flex gap-4 mt-4 sm:mt-0">
+            {{ range . }}
+                <li>
+                    <a href="{{ .url }}" class="*:w-4">
+                        foo
+                    </a>
+                </li>
+            {{ end }}
+        </ul>
+    {{ end }}
+</div>

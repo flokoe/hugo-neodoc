@@ -22,3 +22,21 @@
     @apply snap-start scroll-mt-32;
   }
 }
+
+@theme {
+  --color-brand-50: #eff3f6;  /* dark:text */
+  --color-brand-100: #dce5ea;
+  --color-brand-200: #b8cbd5; /* dark:secondary */
+  --color-brand-300: #98b4c3;
+  --color-brand-400: #759aae;
+  --color-brand-500: #577f94; /* dark:primary */
+  --color-brand-600: #466677;
+  --color-brand-700: #354d5a;
+  --color-brand-800: #22313a;
+  --color-brand-900: #11191d;
+  --color-brand-950: #090e10; /* dark:background */
+
+  --color-accent: #d71daf;
+  --color-nav: #0d1317;
+  --color-nav2: #e7edf2;
+}

@@ -5,20 +5,20 @@
 </head>
 
 <body class="
-    bg-zinc-100 dark:bg-zinc-900
-    text-zinc-900 dark:text-zinc-100
+    bg-brand-50 dark:bg-brand-950
+    text-brand-950 dark:text-brand-50
     text-lg
 "
     x-data="{ showMenuStatic: false, showSearch: false }"
     :class="{ 'overflow-hidden': showMenuStatic || showSearch }"
 >
-    <header class="sticky top-0 bg-zinc-950" x-data="{ showToc: false }">
+    <header class="bg-nav2 dark:bg-nav sticky top-0" x-data="{ showToc: false }">
         {{ partial "header.html" . }}
     </header>
     <main class="p-4 snap-y">
         {{ block "main" . }}{{ end }}
     </main>
-    <footer>
+    <footer class="bg-nav2 dark:bg-nav p-4">
         {{ partial "footer.html" . }}
     </footer>
 </body>
