@@ -7,7 +7,7 @@
 {{ end }}
 
 <!-- Main title bar -->
-<div class="max-w-7xl mx-auto flex justify-between p-4">
+<div class="max-w-7xl mx-auto flex justify-between py-4">
     <em class="text-xl not-italic font-bold">
         <a href="{{ .Site.Home.RelPermalink }}">{{ site.Title }}</a>
     </em>
@@ -49,7 +49,7 @@
 
 <!-- Static menu -->
 <div
-    class="bg-nav2 dark:bg-nav absolute w-full h-screen pt-8"
+    class="bg-nav2 dark:bg-nav absolute left-0 w-full h-screen pt-8"
     x-show="showMenuStatic"
     x-transition
 >
@@ -88,7 +88,7 @@
 </div>
 
 <!-- Mobile navigation menus -->
-<div class="flex justify-between px-4 py-3">
+<div class="max-w-7xl mx-auto flex justify-between py-3">
     <div class="flex gap-3 items-center">
         <button @click="showOffcanvas = true; overflowHidden = true">
             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
@@ -120,7 +120,7 @@
 </div>
 
 <!-- Table of contents for current page -->
-<div x-show="showToc" x-data="closeToc()" @click="closeToc($event)" class="bg-nav2 dark:bg-nav absolute w-full px-4 py-5" x-transition>
+<div x-show="showToc" x-data="closeToc()" @click="closeToc($event)" class="bg-nav2 dark:bg-nav absolute left-0 w-full px-4 py-5" x-transition>
     <h3 class="uppercase text-sm mb-3">On this page</h3>
     {{ .Page.TableOfContents }}
 </div>

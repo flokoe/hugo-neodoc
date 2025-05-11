@@ -10,13 +10,15 @@
     :class="{ 'overflow-hidden': overflowHidden }"
 >
     <header
-        class="bg-nav2 dark:bg-nav sticky top-0"
+        class="bg-nav2 dark:bg-nav sticky top-0 px-4 mb-4"
         x-data="{ showMenuStatic: false, showSearch: false, showToc: false, showOffcanvas: false }">
         {{ partial "header.html" . }}
     </header>
 
-    <main class="p-4 snap-y">
-        {{ block "main" . }}{{ end }}
+    <main class="snap-y p-4">
+        <div class="max-w-7xl mx-auto">
+            {{ block "main" . }}{{ end }}
+        </div>
     </main>
 
     <footer class="bg-nav2 dark:bg-nav text-brand-700 dark:text-brand-200 p-4">
