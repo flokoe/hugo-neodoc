@@ -1,0 +1,16 @@
+{{ with .Site.Menus.social }}
+<ul class="flex gap-5">
+    {{ range . }}
+    <li>
+        <a href="{{ .URL }}" class="*:w-5 *:h-5">
+            {{ if .Params.icon }}
+                {{ $icon := resources.Get (printf "icons/%s.svg" .Params.icon) }}
+                {{ $icon.Content | safeHTML }}
+            {{ else }}
+                {{ .Name }}
+            {{ end }}
+        </a>
+    </li>
+    {{ end }}
+</ul>
+{{ end }}

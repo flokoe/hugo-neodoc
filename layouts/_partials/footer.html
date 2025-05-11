@@ -4,20 +4,5 @@
         <small class="block">Made with <a href="https://flokoe.github.io/hugo-neodoc" class="text-brand-950 dark:text-brand-50">Hugo Neodoc</a></small>
     </p>
 
-    {{ with .Site.Menus.social }}
-        <ul class="flex gap-4">
-            {{ range . }}
-                <li>
-                    <a href="{{ .URL }}" class="*:w-5 *:h-5">
-                        {{ if .Params.icon }}
-                            {{ $icon := resources.Get (printf "icons/%s.svg" .Params.icon) }}
-                            {{ $icon.Content | safeHTML }}
-                        {{ else }}
-                            {{ .Name }}
-                        {{ end }}
-                    </a>
-                </li>
-            {{ end }}
-        </ul>
-    {{ end }}
+    {{ partialCached "socials.html" . }}
 </div>
