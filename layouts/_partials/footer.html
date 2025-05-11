@@ -1,15 +1,20 @@
-<div class="sm:flex sm:justify-between sm:items-center max-w-6xl mx-auto">
-    <p>
-        <small class="block">Copyright © {{ now.Year }} {{ site.Params.author }}</small>
-        <small class="block">Made with <a href="https://hugo-neodoc.flokoe.de/">Hugo Neodoc</a></small>
+<div class="max-w-7xl mx-auto sm:flex sm:justify-between sm:items-center">
+    <p class="mb-4 sm:mb-0">
+        <small class="block">Copyright © {{ now.Year }} {{ .Site.Params.modules.neodoc.author }}</small>
+        <small class="block">Made with <a href="https://flokoe.github.io/hugo-neodoc" class="text-brand-950 dark:text-brand-50">Hugo Neodoc</a></small>
     </p>
 
-    {{ with site.Params.socials }}
-        <ul class="flex gap-4 mt-4 sm:mt-0">
+    {{ with .Site.Menus.social }}
+        <ul class="flex gap-4">
             {{ range . }}
                 <li>
-                    <a href="{{ .url }}" class="*:w-4">
-                        foo
+                    <a href="{{ .URL }}" class="*:w-5 *:h-5">
+                        {{ if .Params.icon }}
+                            {{ $icon := resources.Get (printf "icons/%s.svg" .Params.icon) }}
+                            {{ $icon.Content | safeHTML }}
+                        {{ else }}
+                            {{ .Name }}
+                        {{ end }}
                     </a>
                 </li>
             {{ end }}

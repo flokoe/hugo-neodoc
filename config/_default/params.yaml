@@ -2,6 +2,7 @@
 
 modules:
   neodoc:
+      # Optional: author/owner for the copyright notice.
     # Global banner that can contain Markdown content.
     # There is no hard limit, but I recommend to keep it short.
     # banner:
@@ -11,3 +12,6 @@ modules:
     #   content: >
     #     This is some text in the banner.
     #     **Markdown** is supported.
+
+    # Optional: author/owner for the copyright notice.
+    # author: Florian Köhler
