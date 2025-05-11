@@ -57,13 +57,12 @@
         <ul>
             {{ with .Site.Menus.header_static }}
             {{ range . }}
-            <li class="my-5"><a href="{{ .URL }}">{{ .Name }}</a></li>
+                <li class="my-5"><a href="{{ .URL }}">{{ .Name }}</a></li>
             {{ end }}
             {{ end }}
         </ul>
 
-        <!-- <div>lang select</div>
-        <div>theme</div>-->
+        <!-- <div>lang select</div>-->
 
         {{ partialCached "socials.html" . }}
     </nav>

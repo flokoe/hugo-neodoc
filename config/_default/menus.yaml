@@ -1,13 +1,13 @@
 ---
 
 # Static Menu in the header.
-# header_static:
-#   - name: Blog
-#     pageRef: /blog
-#     weight: 10
-#   - name: About
-#     pageRef: /about
-#     weight: 20
+header_static:
+  - name: Home
+    pageRef: /
+    weight: 10
+  - name: About
+    pageRef: /about
+    weight: 20
 
 # Social links will be shown in the footer and/or header.
 # Links will display icons if the icon is set.
