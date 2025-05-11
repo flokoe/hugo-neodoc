@@ -6,10 +6,12 @@
 
 <body
     class="bg-brand-50 dark:bg-brand-950 text-brand-950 dark:text-brand-50 text-lg"
-    x-data="{ showMenuStatic: false, showSearch: false }"
-    :class="{ 'overflow-hidden': showMenuStatic || showSearch }"
+    x-data="{ overflowHidden: false }"
+    :class="{ 'overflow-hidden': overflowHidden }"
 >
-    <header class="bg-nav2 dark:bg-nav sticky top-0" x-data="{ showToc: false }">
+    <header
+        class="bg-nav2 dark:bg-nav sticky top-0"
+        x-data="{ showMenuStatic: false, showSearch: false, showToc: false, showOffcanvas: false }">
         {{ partial "header.html" . }}
     </header>
 

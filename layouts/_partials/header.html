@@ -14,7 +14,7 @@
 
     <div class="flex gap-5">
         <!-- Search button -->
-        <button x-on:click="showSearch = !showSearch">
+        <button @click="showSearch = !showSearch; overflowHidden = true">
             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
                 <g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2">
                     <path d="m21 21l-4.34-4.34" />
@@ -24,7 +24,7 @@
         </button>
 
         <!-- Static menu button -->
-        <button x-on:click="showMenuStatic = !showMenuStatic">
+        <button @click="showMenuStatic = !showMenuStatic; overflowHidden = !overflowHidden">
             <!-- Dot menu icon -->
             <template x-if="!showMenuStatic">
                 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
@@ -68,9 +68,10 @@
     </nav>
 </div>
 
+<!-- Search -->
 <div x-show="showSearch" x-transition class="bg-nav2 dark:bg-nav absolute top-0 left-0 w-full h-screen">
     <div class="flex gap-4 items-center p-4">
-        <button x-on:click="showSearch = ! showSearch">
+        <button @click="showSearch = ! showSearch; overflowHidden = false">
             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
                 <path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                     d="m12 19l-7-7l7-7m7 7H5" />
@@ -86,9 +87,10 @@
     </div>
 </div>
 
+<!-- Mobile navigation menus -->
 <div class="flex justify-between px-4 py-3">
     <div class="flex gap-3 items-center">
-        <button>
+        <button @click="showOffcanvas = true; overflowHidden = true">
             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
                 <path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                     d="M15 18H3M17 6H3m18 6H3" />
@@ -97,7 +99,9 @@
         Frame > Bottom Bracket
     </div>
 
+    <!-- Toggle table of contents button -->
     <button  x-on:click="showToc = !showToc">
+        <!-- Menu icon -->
         <template x-if="!showToc">
             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
                 <path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
@@ -105,6 +109,7 @@
             </svg>
         </template>
 
+        <!-- Close icon -->
         <template x-if="showToc">
             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
                 <path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
@@ -114,7 +119,29 @@
     </button>
 </div>
 
+<!-- Table of contents for current page -->
 <div x-show="showToc" x-data="closeToc()" @click="closeToc($event)" class="bg-nav2 dark:bg-nav absolute w-full px-4 py-5" x-transition>
     <h3 class="uppercase text-sm mb-3">On this page</h3>
     {{ .Page.TableOfContents }}
+</div>
+
+<!-- Offcanvas Overlay -->
+<div x-show="showOffcanvas" @click="showOffcanvas = false; overflowHidden = false" x-transition.opacity class="fixed inset-0 bg-black/50 z-40 transition-gpu"></div>
+
+<!-- Mobile offcanvas menu -->
+<div x-show="showOffcanvas"
+    class="bg-nav2 dark:bg-nav fixed top-0 left-0 w-2xs h-full z-50 p-4 transition-gpu"
+    x-transition:enter-start="-translate-x-full"
+    x-transition:enter="transition ease-out duration-300"
+    x-transition:enter-end="translate-x-0"
+
+    x-transition:leave-start="translate-x-0"
+    x-transition:leave="transition ease-in duration-200"
+    x-transition:leave-end="-translate-x-full"
+>
+    <nav class="space-y-2">
+        <a href="#" class="block text-blue-600 hover:underline">Home</a>
+        <a href="#" class="block text-blue-600 hover:underline">About</a>
+        <a href="#" class="block text-blue-600 hover:underline">Contact</a>
+    </nav>
 </div>
