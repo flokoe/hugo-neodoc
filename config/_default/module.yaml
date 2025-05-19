@@ -1,0 +1,27 @@
+---
+
+hugoVersion:
+  extended: true
+  min: 0.146.0
+
+mounts:
+  # Default mounts.
+  - source: archetypes
+    target: archetypes
+
+  - source: assets
+    target: assets
+
+  - source: i18n
+    target: i18n
+
+  - source: layouts
+    target: layouts
+
+  - source: static
+    target: static
+
+  # Required for Tailwind CSS to work (class purge).
+  - disableWatch: true
+    source: hugo_stats.json
+    target: assets/notwatching/hugo_stats.json
