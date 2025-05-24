@@ -1,0 +1,23 @@
+{{- /*
+Renders a menu from the content directory structure.
+Each first-level directory becomes a section with its subdirectories/pages listed.
+*/}}
+
+<div>
+    {{ with .Site.GetPage "/" }}
+        {{ range sort (sort .Pages "Title") "Weight" }}
+            {{ if .IsSection }}
+                <section class="mb-7">
+                    <h2 class="{{ if .IsSection }}font-bold{{ end }} mb-2">{{ or .Params.Title (.Section | title) }}</h2>
+                    <ul>
+                        {{ range sort (sort .Pages "Title") "Weight" }}
+                        <li class="mb-2">
+                            <a href="{{ .RelPermalink }}" class="">{{ .Title }}</a>
+                        </li>
+                        {{ end }}
+                    </ul>
+                </section>
+            {{ end }}
+        {{ end }}
+    {{ end }}
+</div>

@@ -12,9 +12,9 @@
         <a href="{{ .Site.Home.RelPermalink }}">{{ site.Title }}</a>
     </em>
 
-    <div class="flex gap-5">
+    <div class="flex gap-5 sm:gap-9 items-center">
         <!-- Search button -->
-        <button @click="showSearch = !showSearch; overflowHidden = true">
+        <button @click="showSearch = !showSearch; overflowHidden = true" class="sm:hidden">
             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
                 <g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2">
                     <path d="m21 21l-4.34-4.34" />
@@ -24,7 +24,9 @@
         </button>
 
         <!-- Static menu button -->
-        <button @click="showMenuStatic = !showMenuStatic; overflowHidden = !overflowHidden">
+        <button
+            @click="showMenuStatic = !showMenuStatic; overflowHidden = !overflowHidden"
+            class="sm:hidden">
             <!-- Dot menu icon -->
             <template x-if="!showMenuStatic">
                 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
@@ -44,6 +46,39 @@
                 </svg>
             </template>
         </button>
+
+        <nav class="hidden sm:block">
+            <ul class="flex gap-4">
+                {{ with .Site.Menus.header_static }}
+                {{ range . }}
+                <li><a href="{{ .URL }}">{{ .Name }}</a></li>
+                {{ end }}
+                {{ end }}
+            </ul>
+        </nav>
+
+        <button
+            class="hidden dark:bg-brand-950 dark:text-brand-200 rounded-md sm:flex items-center h-full px-1 cursor-pointer"
+            @click="showSearch = !showSearch; overflowHidden = true">
+            <div class="flex items-center mr-3">
+                <span class="*:size-4 mr-1">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                        <g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2">
+                            <path d="m21 21l-4.34-4.34" />
+                            <circle cx="11" cy="11" r="8" />
+                        </g>
+                    </svg>
+                </span>
+                <span class="text-base">Search</span>
+            </div>
+            <div class="text-xs dark:border-brand-800 border-1 rounded px-1">
+                <kbd>CTRL K</kbd>
+            </div>
+        </button>
+
+        <div class="hidden sm:block *:gap-3">
+            {{ partialCached "socials.html" . }}
+        </div>
     </div>
 </div>
 
@@ -88,7 +123,7 @@
 </div>
 
 <!-- Mobile navigation menus -->
-<div class="max-w-7xl mx-auto flex justify-between py-3">
+<div class="md:hidden max-w-7xl mx-auto flex justify-between py-3">
     <div class="flex gap-3 items-center">
         <button @click="showOffcanvas = true; overflowHidden = true">
             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
@@ -96,7 +131,12 @@
                     d="M15 18H3M17 6H3m18 6H3" />
             </svg>
         </button>
-        Frame > Bottom Bracket
+
+        {{ if .Section }}
+            {{ .Section | title }} &gt; {{ .Title }}
+        {{ else }}
+            {{ .Title }}
+        {{ end }}
     </div>
 
     <!-- Toggle table of contents button -->
@@ -139,9 +179,15 @@
     x-transition:leave="transition ease-in duration-200"
     x-transition:leave-end="-translate-x-full"
 >
-    <nav class="space-y-2">
-        <a href="#" class="block text-blue-600 hover:underline">Home</a>
-        <a href="#" class="block text-blue-600 hover:underline">About</a>
-        <a href="#" class="block text-blue-600 hover:underline">Contact</a>
-    </nav>
+    <div class="flex justify-between items-center mb-6">
+        <h3 class="font-bold text-xl">Content</h3>
+        <button @click="showOffcanvas = false; overflowHidden = false">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
+                <path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                    d="M18 6L6 18M6 6l12 12" />
+            </svg>
+        </button>
+    </div>
+
+    {{ partialCached "content-tree.html" . }}
 </div>

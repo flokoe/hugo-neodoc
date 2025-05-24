@@ -15,11 +15,15 @@
         {{ partial "header.html" . }}
     </header>
 
-    <main class="snap-y p-4">
-        <div class="max-w-7xl mx-auto">
+    <div class="max-w-7xl mx-auto flex gap-4 md:p-4">
+        <nav class="hidden md:block basis-93">
+            {{ partialCached "content-tree.html" . }}
+        </nav>
+
+        <main class="snap-y p-4 md:p-0 md:basis-full">
             {{ block "main" . }}{{ end }}
-        </div>
-    </main>
+        </main>
+    </div>
 
     <footer class="bg-nav2 dark:bg-nav text-brand-700 dark:text-brand-200 p-4">
         {{ partial "footer.html" . }}
